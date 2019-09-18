@@ -37,6 +37,7 @@
       : {};
     this.obs = new IntersectionObserver(update, iocfg);
     this.list = [];
+    this.add(Array.from(this.host.querySelectorAll('.ldpx')));
     return this;
   };
   ldParallax.prototype = import$(Object.create(Object.prototype), {
@@ -88,12 +89,11 @@
     if (!scrollers.length) {
       scrollers = [document];
     }
-    return scrollers.map(function(it){
+    return scrollers.map(function(){
       var ldpx;
-      ldpx = new ldParallax({
+      return ldpx = new ldParallax({
         host: document
       });
-      return ldpx.add(Array.from(it.querySelectorAll('.ldpx')));
     });
   };
   if (typeof module != 'undefined' && module !== null) {
